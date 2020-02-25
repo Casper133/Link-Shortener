@@ -1,4 +1,8 @@
+/* TODO: Split main file to multiple files */
+/* TODO: Adaptive sizes (font, padding, margin, border) */
+
 body {
+    font-family: "JetBrains Mono Medium", sans-serif;
     margin: 0;
 }
 
@@ -10,7 +14,7 @@ a {
 .nav-menu {
     display: flex;
     flex-direction: row;
-    float: right;
+    justify-content: flex-end;
 }
 
 .menu-button {
@@ -27,4 +31,45 @@ a {
 .selected-menu-button {
     border-bottom-style: solid;
     border-bottom-color: black;
+}
+
+.service-description {
+    font-family: "JetBrains Mono ExtraBold", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    outline: none;
+}
+
+.shorten-link-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.original-link-field {
+    font-size: 20px;
+    width: 30%;
+    height: 40px;
+    border-color: black;
+    border-radius: 20px;
+    border-width: 2px;
+    padding: 0 30px 0 30px;
+}
+
+.shorten-link-button {
+    font-size: 20px;
+    background-color: #edeef0;
+    border-style: none;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.shorten-link-button:hover {
+    background-color: #d9dadc;
 }
