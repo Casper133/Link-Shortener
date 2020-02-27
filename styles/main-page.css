@@ -1,47 +1,8 @@
-/* TODO: Split main file to multiple files */
-/* TODO: Adaptive sizes (font, padding, margin, border) */
-
-body {
-    font-family: "JetBrains Mono Medium", sans-serif;
-    margin: 0;
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-.nav-menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-}
-
-.menu-button {
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    margin: 5px;
-}
-
-.menu-button:hover, .selected-menu-button {
-    background-color: #e3e4e6;
-}
-
-.selected-menu-button {
-    border-bottom-style: solid;
-    border-bottom-color: black;
-}
-
 .service-description {
     font-family: "JetBrains Mono ExtraBold", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-input {
-    outline: none;
 }
 
 .shorten-link-form {

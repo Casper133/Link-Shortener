@@ -1,0 +1,21 @@
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.menu-button {
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 5px;
+}
+
+.menu-button:hover, .selected-menu-button {
+    background-color: #e3e4e6;
+}
+
+.selected-menu-button {
+    border-bottom-style: solid;
+    border-bottom-color: black;
+}
