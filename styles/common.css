@@ -1,5 +1,15 @@
+@font-face {
+    font-family: JetBrainsMonoMedium;
+    src: url("fonts/JetBrainsMono-Medium.woff");
+}
+
+@font-face {
+    font-family: JetBrainsMonoExtraBold;
+    src: url("fonts/JetBrainsMono-ExtraBold.woff");
+}
+
 body {
-    font-family: "JetBrains Mono Medium", sans-serif;
+    font-family: JetBrainsMonoMedium, sans-serif;
     font-size: 100%;
     margin: 0;
 }
