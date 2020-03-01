@@ -2,26 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sign in</title>
+  <title>Sign In</title>
   <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-<div class="nav-menu">
+<nav class="nav-menu">
   <a href="index.html">
     <div class="menu-button">
-      Main page
+      Main Page
     </div>
   </a>
   <a href="links.html">
     <div class="menu-button">
-      My links
+      My Links
     </div>
   </a>
   <a href="sign-in.html">
     <div class="menu-button selected-menu-button">
-      Sign in
+      Sign In
     </div>
   </a>
-</div>
+</nav>
+<h1 class="page-header">Sign in to your account</h1>
+<br>
+<form>
+  <label class="page-form">
+    <input class="form-text-field" name="username" placeholder="Enter username" type="text">
+    <input class="form-text-field" name="password" placeholder="Enter password" type="password">
+    <input class="form-button" value="Sign In" type="submit">
+  </label>
+</form>
 </body>
 </html>

@@ -8,7 +8,7 @@
     src: url("fonts/JetBrainsMono-ExtraBold.woff");
 }
 
-body {
+body, input {
     font-family: JetBrainsMonoMedium, sans-serif;
     font-size: 100%;
     margin: 0;
@@ -19,6 +19,9 @@ a {
     color: black;
 }
 
-input {
-    outline: none;
+.page-header {
+    font-family: JetBrainsMonoExtraBold, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
