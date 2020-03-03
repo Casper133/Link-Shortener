@@ -14,6 +14,14 @@ body, input {
     margin: 0;
 }
 
+input {
+    text-align: center;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
 a {
     text-decoration: none;
     color: black;
