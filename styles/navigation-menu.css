@@ -1,7 +1,25 @@
-.nav-menu {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+@media (min-width: 0) {
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        border-bottom: black solid 0.1em;
+    }
+}
+
+@media (min-width: 68em) {
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        border-bottom: none;
+    }
+
+    .selected-menu-button {
+        border-bottom-style: solid;
+        border-bottom-color: black;
+    }
 }
 
 .menu-button {
@@ -13,9 +31,4 @@
 
 .menu-button:hover, .selected-menu-button {
     background-color: #e3e4e6;
-}
-
-.selected-menu-button {
-    border-bottom-style: solid;
-    border-bottom-color: black;
 }
