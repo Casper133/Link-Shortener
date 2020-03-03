@@ -1,0 +1,34 @@
+.links-list {
+    width: 100%;
+    border-spacing: 0;
+    padding: 0.2em;
+}
+
+.edit-link-column-header {
+    border-right: 0;
+}
+
+.delete-link-column-header {
+    border-left: 0;
+}
+
+.original-link, .short-link {
+    text-decoration: underline;
+}
+
+.original-link-column-header {
+    width: 35%;
+}
+
+.short-link-column-header {
+    width: 30%;
+}
+
+.edit-link-column-header, .delete-link-column-header {
+    width: 17.5%;
+}
+
+.edit-link-button, .delete-link-button {
+    width: 2em;
+}
+

@@ -19,6 +19,12 @@ a {
     color: black;
 }
 
+th, td {
+    text-align: center;
+    border: 0.1em solid;
+    padding: 0.3em;
+}
+
 .page-header {
     font-family: JetBrainsMonoExtraBold, sans-serif;
     display: flex;
