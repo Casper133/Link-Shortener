@@ -1,4 +1,4 @@
-@media (min-width: 0) {
+@media {
     .nav-menu {
         display: flex;
         flex-direction: column;
