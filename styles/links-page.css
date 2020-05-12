@@ -12,10 +12,6 @@
     border-left: 0;
 }
 
-.original-link, .short-link {
-    text-decoration: underline;
-}
-
 .original-link-column-header {
     width: 35%;
 }
@@ -28,7 +24,10 @@
     width: 17.5%;
 }
 
+.link {
+    text-decoration: underline;
+}
+
 .edit-link-button, .delete-link-button {
     width: 2em;
 }
-
