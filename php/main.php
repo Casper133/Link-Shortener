@@ -6,16 +6,14 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
 
-require_once 'vendor/autoload.php';
+require_once '../vendor/autoload.php';
 
 // TODO: links.php page
 // TODO: edit_link.php page
 // TODO: delete_link.php page
 
-$loader = new FilesystemLoader('templates');
-$twig = new Environment($loader, [
-    'cache' => 'vendor/cache',
-]);
+$loader = new FilesystemLoader('../templates');
+$twig = new Environment($loader);
 
 try {
     echo $twig->render('main_page.twig');
