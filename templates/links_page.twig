@@ -1,0 +1,56 @@
+{% extends "base_template.twig" %}
+
+{% block page_title %}
+    My Links
+{% endblock %}
+
+{% block additional_stylesheets %}
+    <link rel="stylesheet" href="styles/links-page.css">
+{% endblock %}
+
+{% block links_page_menu_button %}
+    <a href="/links.php">
+        <div class="menu-button selected-menu-button">
+            My Links
+        </div>
+    </a>
+{% endblock %}
+
+{% block page_header %}
+    Your links
+{% endblock %}
+
+{% block page_content %}
+    <table class="links-list">
+        <tr>
+            <th class="original-link-column-header">Оригинальная ссылка</th>
+            <th class="short-link-column-header">Сокращённая ссылка</th>
+            <th class="edit-link-column-header"></th>
+            <th class="delete-link-column-header"></th>
+        </tr>
+        {% for link in links %}
+            <tr>
+                <td>
+                    <a class="link" target="_blank" rel="noopener noreferrer" href="{{ link.original_link }}">
+                        {{ link.original_link }}
+                    </a>
+                </td>
+                <td>
+                    <a class="link" target="_blank" rel="noopener noreferrer" href="{{ link.short_link }}">
+                        {{ link.short_link }}
+                    </a>
+                </td>
+                <td>
+                    <a href="/edit_link.php?id={{ link.id }}">
+                        <img class="edit-link-button" src="images/edit-link.png" alt="Edit link">
+                    </a>
+                </td>
+                <td>
+                    <a href="/delete_link.php?id={{ link.id }}">
+                        <img class="delete-link-button" src="images/delete-link.png" alt="Delete link">
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

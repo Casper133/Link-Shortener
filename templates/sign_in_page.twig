@@ -1,0 +1,31 @@
+{% extends "base_template.twig" %}
+
+{% block page_title %}
+    Sign In
+{% endblock %}
+
+{% block additional_stylesheets %}
+    <link rel="stylesheet" href="styles/page-form.css">
+{% endblock %}
+
+{% block sign_in_page_menu_button %}
+    <a href="/sign_in.php">
+        <div class="menu-button selected-menu-button">
+            Sign In
+        </div>
+    </a>
+{% endblock %}
+
+{% block page_header %}
+    Sign in to your account
+{% endblock %}
+
+{% block page_content %}
+    <form>
+        <label class="page-form">
+            <input class="form-text-field" name="email" placeholder="Enter e-mail" type="text">
+            <input class="form-text-field" name="password" placeholder="Enter password" type="password">
+            <input class="form-button" value="Sign In" type="submit">
+        </label>
+    </form>
+{% endblock %}

@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  link-shortener-service:
+    build: .
+    image: link-shortener:latest
+    container_name: link-shortener-service
+    restart: on-failure
+    working_dir: /var/www/link_shortener
+    volumes:
+      - ./:/var/www/link_shortener
+    networks:
+      - link-shortener-network
+
+  nginx-service:
+    image: nginx:1.18.0-alpine
+    container_name: nginx-service
+    restart: on-failure
+    ports:
+      - 80:80
+    volumes:
+      - ./config/nginx/link_shortener.conf:/etc/nginx/conf.d/default.conf
+      - ./:/var/www/link_shortener
+    networks:
+      - link-shortener-network
+
+networks:
+  link-shortener-network:
+    driver: bridge

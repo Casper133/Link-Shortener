@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block page_title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="stylesheet" href="styles/common.css">
+    <link rel="stylesheet" href="styles/navigation-menu.css">
+    {% block additional_stylesheets %}
+    {% endblock %}
+</head>
+<body>
+<nav class="nav-menu">
+    {% block main_page_menu_button %}
+    <a href="/main.php">
+        <div class="menu-button">
+            Main Page
+        </div>
+    </a>
+    {% endblock %}
+    {% block links_page_menu_button %}
+    <a href="/links.php">
+        <div class="menu-button">
+            My Links
+        </div>
+    </a>
+    {% endblock %}
+    {% block sign_in_page_menu_button %}
+    <a href="/sign_in.php">
+        <div class="menu-button">
+            Sign In
+        </div>
+    </a>
+    {% endblock %}
+</nav>
+<h1 class="page-header">{% block page_header %}{% endblock %}</h1>
+<br>
+{% block page_content %}
+{% endblock %}
+</body>
+</html>
