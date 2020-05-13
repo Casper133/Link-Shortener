@@ -1,10 +1,6 @@
 <?php
 
-use Twig\Environment;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
-use Twig\Loader\FilesystemLoader;
+use LinkShortener\Loader\TemplateLoader;
 
 require_once '../vendor/autoload.php';
 
@@ -12,11 +8,5 @@ require_once '../vendor/autoload.php';
 // TODO: edit_link.php page
 // TODO: delete_link.php page
 
-$loader = new FilesystemLoader('../templates');
-$twig = new Environment($loader);
-
-try {
-    echo $twig->render('main_page.twig');
-} catch (LoaderError | RuntimeError | SyntaxError $e) {
-    echo $e->getMessage();
-}
+$templateLoader = new TemplateLoader();
+$templateLoader->renderStaticTemplate('main_page.twig');
