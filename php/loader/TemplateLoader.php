@@ -35,4 +35,21 @@ class TemplateLoader
             echo $exception->getMessage();
         }
     }
+
+    /**
+     * @param string $templateName
+     * @param array $links
+     */
+    public function loadLinksTemplate(string $templateName, array $links): void
+    {
+        if (!isset($this->twig)) {
+            return;
+        }
+
+        try {
+            echo $this->twig->render($templateName, ['links' => $links]);
+        } catch (LoaderError | RuntimeError | SyntaxError $exception) {
+            echo $exception->getMessage();
+        }
+    }
 }

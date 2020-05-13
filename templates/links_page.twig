@@ -23,8 +23,8 @@
 {% block page_content %}
     <table class="links-list">
         <tr>
-            <th class="original-link-column-header">Оригинальная ссылка</th>
-            <th class="short-link-column-header">Сокращённая ссылка</th>
+            <th class="original-link-column-header">Original link</th>
+            <th class="short-link-column-header">Short link</th>
             <th class="edit-link-column-header"></th>
             <th class="delete-link-column-header"></th>
         </tr>
@@ -32,12 +32,12 @@
             <tr>
                 <td>
                     <a class="link" target="_blank" rel="noopener noreferrer" href="{{ link.original_link }}">
-                        {{ link.original_link }}
+                        {{ link.originalLink }}
                     </a>
                 </td>
                 <td>
                     <a class="link" target="_blank" rel="noopener noreferrer" href="{{ link.short_link }}">
-                        {{ link.short_link }}
+                        {{ link.shortLink }}
                     </a>
                 </td>
                 <td>
