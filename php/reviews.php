@@ -16,11 +16,22 @@ if (empty($username) && empty($message)) {
 }
 
 if (!empty($username) && !empty($message)) {
+    $message = replaceLinks($message);
+
     $review = new Review($username, $message);
     $reviewRepository = JsonFileReviewRepository::getInstance();
     $reviewRepository->save($review);
 
     loadReviewsTemplate();
+}
+
+function replaceLinks(string $message): string
+{
+    $pattern = '/(https?:\/\/(?!bsuir\.by)(?:[\w]*\.)(?!bsuir\.by)[\w.-\/]*)/';
+    $replacement = '#External links not allowed#';
+    $result = preg_replace($pattern, $replacement, $message);
+
+    return $result ?? $message;
 }
 
 function loadReviewsTemplate()
