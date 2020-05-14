@@ -7,6 +7,7 @@
     },
     "autoload": {
         "psr-4": {
+            "LinkShortener\\": "php",
             "LinkShortener\\Loader\\": "php/loader",
             "LinkShortener\\Entity\\": "php/entity"
         }
