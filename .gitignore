@@ -9,5 +9,5 @@ composer.phar
 !.idea/runConfigurations/Docker_debug.xml
 !.idea/runConfigurations/Up_debug_environment.xml
 !.idea/runConfigurations/Down_debug_environment.xml
-!.idea/runConfigurations/Up_develop_environment.xml
-!.idea/runConfigurations/Down_develop_environment.xml
+!.idea/runConfigurations/Up_normal_environment.xml
+!.idea/runConfigurations/Down_normal_environment.xml

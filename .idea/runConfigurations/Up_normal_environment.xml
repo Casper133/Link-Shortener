@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Up develop environment" type="ShConfigurationType" singleton="false">
+  <configuration default="false" name="Up normal environment" type="ShConfigurationType" singleton="false">
     <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
     <option name="SCRIPT_PATH" value="$PROJECT_DIR$/up.sh" />
     <option name="SCRIPT_OPTIONS" value="" />
