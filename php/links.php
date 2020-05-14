@@ -1,9 +1,13 @@
 <?php
 
+namespace LinkShortener;
+
 use LinkShortener\Entity\Link;
 use LinkShortener\Loader\TemplateLoader;
 
 require_once '../vendor/autoload.php';
+
+const LINKS_KEY = 'links';
 
 $firstLink = new Link();
 $firstLink->setId(1);
@@ -20,7 +24,7 @@ $thirdLink->setId(3);
 $thirdLink->setOriginalLink('https://google.com');
 $thirdLink->setShortLink('https://example.com/link-3');
 
-$links = array($firstLink, $secondLink, $thirdLink);
+$links = array(LINKS_KEY => array($firstLink, $secondLink, $thirdLink));
 
 $templateLoader = new TemplateLoader();
-$templateLoader->loadLinksTemplate('links_page.twig', $links);
+$templateLoader->loadTemplateWithContext('links_page.twig', $links);

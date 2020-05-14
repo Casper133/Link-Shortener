@@ -12,8 +12,6 @@ class TemplateLoader
 {
     private Environment $twig;
 
-    private const LINKS_KEY = 'links';
-
     /**
      * TemplateLoader constructor.
      */
@@ -40,16 +38,16 @@ class TemplateLoader
 
     /**
      * @param string $templateName
-     * @param array $links
+     * @param array $context
      */
-    public function loadLinksTemplate(string $templateName, array $links): void
+    public function loadTemplateWithContext(string $templateName, array $context): void
     {
         if (!isset($this->twig)) {
             return;
         }
 
         try {
-            echo $this->twig->render($templateName, [self::LINKS_KEY => $links]);
+            echo $this->twig->render($templateName, $context);
         } catch (LoaderError | RuntimeError | SyntaxError $exception) {
             echo $exception->getMessage();
         }
