@@ -1,0 +1,45 @@
+{% extends "base_template.twig" %}
+
+{% block page_title %}
+    Reviews
+{% endblock %}
+
+{% block additional_stylesheets %}
+    <link rel="stylesheet" href="styles/page-form.css">
+    <link rel="stylesheet" href="styles/reviews-page.css">
+{% endblock %}
+
+{% block reviews_page_menu_button %}
+    <a href="reviews.php">
+        <div class="menu-button selected-menu-button">
+            Reviews
+        </div>
+    </a>
+{% endblock %}
+
+{% block page_header %}
+    Reviews
+{% endblock %}
+
+{% block page_content %}
+    <hr>
+    <div class="reviews-list">
+        {% for review in reviews %}
+            <div class="separate-review">
+                <b><u>Username</u>: </b>{{ review.username }}<br>
+                <b><u>Message</u>:</b><br>{{ review.message|nl2br }}
+            </div>
+        {% endfor %}
+    </div>
+    <br>
+    <hr>
+    <br>
+    <form method="post">
+        <label class="page-form">
+            <input class="form-text-field" name="username" placeholder="Enter your username"
+                   type="text" autocomplete="off">
+            <textarea class="form-text-area" name="message" placeholder="Enter message"></textarea>
+            <input class="form-button" value="Leave a review" type="submit">
+        </label>
+    </form>
+{% endblock %}

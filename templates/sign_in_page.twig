@@ -23,8 +23,10 @@
 {% block page_content %}
     <form method="post">
         <label class="page-form">
-            <input class="form-text-field" name="email" placeholder="Enter e-mail" type="text">
-            <input class="form-text-field" name="password" placeholder="Enter password" type="password">
+            <input class="form-text-field" name="email" placeholder="Enter e-mail"
+                   type="text" autocomplete="off">
+            <input class="form-text-field" name="password" placeholder="Enter password"
+                   type="password" autocomplete="off">
             <input class="form-button" value="Sign In" type="submit">
         </label>
     </form>

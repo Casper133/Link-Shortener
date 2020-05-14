@@ -1,0 +1,14 @@
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 0.2em;
+}
+
+.separate-review {
+    font-size: 110%;
+    width: 20em;
+    padding: 0.8em 0;
+}
