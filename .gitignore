@@ -1,5 +1,9 @@
-.idea
-
 # Composer
 vendor
 composer.phar
+
+# Debug configuration
+.idea/**
+!.idea/runConfigurations/
+.idea/runConfigurations/**
+!.idea/runConfigurations/Docker_Debug.xml
