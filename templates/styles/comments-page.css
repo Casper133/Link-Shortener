@@ -1,0 +1,13 @@
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-top: 0.2em;
+}
+
+.separate-comment {
+    font-size: 110%;
+    padding: 0.8em 0;
+}

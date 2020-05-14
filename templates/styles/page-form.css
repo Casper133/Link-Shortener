@@ -17,6 +17,17 @@
     margin-bottom: 0.5em;
 }
 
+.form-text-area {
+    font-size: 1.5em;
+    width: 20em;
+    height: 10em;
+    border-style: solid;
+    border-color: black;
+    border-width: 0.15em;
+    padding: 1em 1.5em;
+    margin-bottom: 0.5em;
+}
+
 .form-button {
     font-size: 1.25em;
     background-color: #edeef0;

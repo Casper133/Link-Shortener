@@ -1,0 +1,42 @@
+{% extends "base_template.twig" %}
+
+{% block page_title %}
+    Comments
+{% endblock %}
+
+{% block additional_stylesheets %}
+    <link rel="stylesheet" href="styles/page-form.css">
+    <link rel="stylesheet" href="styles/comments-page.css">
+{% endblock %}
+
+{% block comments_page_menu_button %}
+    <a href="comments.php">
+        <div class="menu-button selected-menu-button">
+            Comments
+        </div>
+    </a>
+{% endblock %}
+
+{% block page_header %}
+    Comments
+{% endblock %}
+
+{% block page_content %}
+    <form method="post">
+        <label class="page-form">
+            <input class="form-text-field" name="username" placeholder="Enter your username" type="text">
+            <textarea class="form-text-area" name="message" placeholder="Enter message"></textarea>
+            <input class="form-button" value="Leave a comment" type="submit">
+        </label>
+    </form>
+    <br>
+    <hr>
+    <div class="comments-list">
+        {% for comment in comments %}
+            <div class="separate-comment">
+                <b><u>Username</u>: </b>{{ comment.username }}<br>
+                <b><u>Message</u>:</b><br>{{ comment.message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
