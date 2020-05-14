@@ -2,8 +2,12 @@
 vendor
 composer.phar
 
-# Debug configuration
+# Run configurations
 .idea/**
 !.idea/runConfigurations/
 .idea/runConfigurations/**
-!.idea/runConfigurations/Docker_Debug.xml
+!.idea/runConfigurations/Docker_debug.xml
+!.idea/runConfigurations/Up_debug_environment.xml
+!.idea/runConfigurations/Down_debug_environment.xml
+!.idea/runConfigurations/Up_develop_environment.xml
+!.idea/runConfigurations/Down_develop_environment.xml
