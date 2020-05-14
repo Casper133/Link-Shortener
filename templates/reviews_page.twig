@@ -1,24 +1,24 @@
 {% extends "base_template.twig" %}
 
 {% block page_title %}
-    Comments
+    Reviews
 {% endblock %}
 
 {% block additional_stylesheets %}
     <link rel="stylesheet" href="styles/page-form.css">
-    <link rel="stylesheet" href="styles/comments-page.css">
+    <link rel="stylesheet" href="styles/reviews-page.css">
 {% endblock %}
 
-{% block comments_page_menu_button %}
-    <a href="comments.php">
+{% block reviews_page_menu_button %}
+    <a href="reviews.php">
         <div class="menu-button selected-menu-button">
-            Comments
+            Reviews
         </div>
     </a>
 {% endblock %}
 
 {% block page_header %}
-    Comments
+    Reviews
 {% endblock %}
 
 {% block page_content %}
@@ -27,16 +27,16 @@
             <input class="form-text-field" name="username" placeholder="Enter your username"
                    type="text" autocomplete="off">
             <textarea class="form-text-area" name="message" placeholder="Enter message"></textarea>
-            <input class="form-button" value="Leave a comment" type="submit">
+            <input class="form-button" value="Leave a review" type="submit">
         </label>
     </form>
     <br>
     <hr>
-    <div class="comments-list">
-        {% for comment in comments %}
-            <div class="separate-comment">
-                <b><u>Username</u>: </b>{{ comment.username }}<br>
-                <b><u>Message</u>:</b><br>{{ comment.message }}
+    <div class="reviews-list">
+        {% for review in reviews %}
+            <div class="separate-review">
+                <b><u>Username</u>: </b>{{ review.username }}<br>
+                <b><u>Message</u>:</b><br>{{ review.message|nl2br }}
             </div>
         {% endfor %}
     </div>

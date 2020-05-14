@@ -3,13 +3,15 @@
 
 namespace LinkShortener\Entity;
 
-class Comment
+use JsonSerializable;
+
+class Review implements JsonSerializable
 {
     private string $username;
     private string $message;
 
     /**
-     * Comment constructor.
+     * Review constructor.
      * @param string $username
      * @param string $message
      */
@@ -33,5 +35,16 @@ class Comment
     public function getMessage(): string
     {
         return $this->message;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function jsonSerialize()
+    {
+        return array(
+            'username' => $this->username,
+            'message' => $this->message
+        );
     }
 }

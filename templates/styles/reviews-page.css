@@ -1,4 +1,4 @@
-.comments-list {
+.reviews-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -7,7 +7,7 @@
     padding-top: 0.2em;
 }
 
-.separate-comment {
+.separate-review {
     font-size: 110%;
     padding: 0.8em 0;
 }
