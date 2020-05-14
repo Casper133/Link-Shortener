@@ -22,15 +22,6 @@
 {% endblock %}
 
 {% block page_content %}
-    <form method="post">
-        <label class="page-form">
-            <input class="form-text-field" name="username" placeholder="Enter your username"
-                   type="text" autocomplete="off">
-            <textarea class="form-text-area" name="message" placeholder="Enter message"></textarea>
-            <input class="form-button" value="Leave a review" type="submit">
-        </label>
-    </form>
-    <br>
     <hr>
     <div class="reviews-list">
         {% for review in reviews %}
@@ -40,4 +31,15 @@
             </div>
         {% endfor %}
     </div>
+    <br>
+    <hr>
+    <br>
+    <form method="post">
+        <label class="page-form">
+            <input class="form-text-field" name="username" placeholder="Enter your username"
+                   type="text" autocomplete="off">
+            <textarea class="form-text-area" name="message" placeholder="Enter message"></textarea>
+            <input class="form-button" value="Leave a review" type="submit">
+        </label>
+    </form>
 {% endblock %}
