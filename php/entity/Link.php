@@ -4,14 +4,14 @@ namespace LinkShortener\Entity;
 
 class Link
 {
-    private int $id = -1;
+    private ?int $id = null;
     private string $originalLink = '';
     private string $shortLink = '';
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }

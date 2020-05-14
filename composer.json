@@ -9,7 +9,8 @@
         "psr-4": {
             "LinkShortener\\": "php",
             "LinkShortener\\Loader\\": "php/loader",
-            "LinkShortener\\Entity\\": "php/entity"
+            "LinkShortener\\Entity\\": "php/entity",
+            "LinkShortener\\Repository\\": "php/repository"
         }
     }
 }
