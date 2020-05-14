@@ -11,10 +11,6 @@ require_once '../vendor/autoload.php';
 $username = trim($_POST['username']);
 $message = trim($_POST['message']);
 
-if (empty($username) && empty($message)) {
-    loadReviewsTemplate();
-}
-
 if (!empty($username) && !empty($message)) {
     $message = replaceLinks($message);
 
@@ -22,6 +18,8 @@ if (!empty($username) && !empty($message)) {
     $reviewRepository = JsonFileReviewRepository::getInstance();
     $reviewRepository->save($review);
 
+    loadReviewsTemplate();
+} else {
     loadReviewsTemplate();
 }
 
