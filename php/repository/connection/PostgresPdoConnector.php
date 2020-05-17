@@ -50,11 +50,6 @@ class PostgresPdoConnector
         $this->pdo = new PDO($dsn, $pgUsername, $pgPassword);
     }
 
-    public function closeConnection(): void
-    {
-        $this->pdo = null;
-    }
-
     /**
      * @param string $sql
      * @param array $args
