@@ -19,7 +19,7 @@ if (isset($linkId) && empty($newOriginalLink)) {
     $pageContext = array('originalLink' => $originalLink);
 
     $templateLoader = new TemplateLoader();
-    $templateLoader->loadTemplateWithContext('edit_link_page.twig', $pageContext);
+    $templateLoader->loadTemplate('edit_link_page.twig', $pageContext);
 }
 
 if (isset($linkId) && !empty($newOriginalLink)) {

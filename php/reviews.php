@@ -38,5 +38,5 @@ function loadReviewsTemplate()
     $reviews = array('reviews' => $reviewRepository->getAll());
 
     $templateLoader = new TemplateLoader();
-    $templateLoader->loadTemplateWithContext('reviews_page.twig', $reviews);
+    $templateLoader->loadTemplate('reviews_page.twig', $reviews);
 }

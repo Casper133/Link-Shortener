@@ -11,4 +11,4 @@ $linkRepository = DatabaseLinkRepository::getInstance();
 $links = array('links' => $linkRepository->getAll());
 
 $templateLoader = new TemplateLoader();
-$templateLoader->loadTemplateWithContext('links_page.twig', $links);
+$templateLoader->loadTemplate('links_page.twig', $links);

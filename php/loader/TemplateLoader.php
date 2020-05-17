@@ -22,25 +22,9 @@ class TemplateLoader
 
     /**
      * @param string $templateName
-     */
-    public function loadTemplate(string $templateName): void
-    {
-        if (!isset($this->twig)) {
-            return;
-        }
-
-        try {
-            echo $this->twig->render($templateName);
-        } catch (LoaderError | RuntimeError | SyntaxError $exception) {
-            echo $exception->getMessage();
-        }
-    }
-
-    /**
-     * @param string $templateName
      * @param array $context
      */
-    public function loadTemplateWithContext(string $templateName, array $context): void
+    public function loadTemplate(string $templateName, array $context = []): void
     {
         if (!isset($this->twig)) {
             return;
