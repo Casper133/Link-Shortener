@@ -7,10 +7,19 @@ services:
     container_name: link-shortener-service
     restart: on-failure
     working_dir: /var/www/link_shortener
+    environment:
+      POSTGRES_DB_HOST: postgres-service
+      POSTGRES_DB_PORT: 5432
+      POSTGRES_DB_NAME: link_shortener
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
     volumes:
       - ./:/var/www/link_shortener
     networks:
       - link-shortener-network
+    depends_on:
+      - nginx-service
+      - postgres-service
 
   nginx-service:
     image: nginx:1.18.0-alpine
@@ -23,6 +32,23 @@ services:
       - ./:/var/www/link_shortener
     networks:
       - link-shortener-network
+
+  postgres-service:
+    image: postgres:12.0
+    container_name: postgres-service
+    ports:
+      - 5432
+    environment:
+      POSTGRES_DB: link_shortener
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-link-shortener-data:/var/lib/postgresql/data
+    networks:
+      - link-shortener-network
+
+volumes:
+  postgres-link-shortener-data:
 
 networks:
   link-shortener-network:
