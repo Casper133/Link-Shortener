@@ -18,9 +18,9 @@ class Link
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      */
-    public function setId(int $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
@@ -66,9 +66,9 @@ class Link
     }
 
     /**
-     * @param int $userId
+     * @param int|null $userId
      */
-    public function setUserId(int $userId): void
+    public function setUserId(?int $userId): void
     {
         $this->userId = $userId;
     }
