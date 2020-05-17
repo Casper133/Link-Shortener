@@ -11,7 +11,13 @@ class InMemoryLinkRepository implements LinkRepository
     private int $idCounter = 0;
     private array $links = array();
 
-    private function __construct() {}
+    private function __construct()
+    {
+    }
+
+    private function __clone()
+    {
+    }
 
     /**
      * @return LinkRepository

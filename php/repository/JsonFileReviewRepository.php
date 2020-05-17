@@ -19,6 +19,10 @@ class JsonFileReviewRepository implements ReviewRepository
         }
     }
 
+    private function __clone()
+    {
+    }
+
     /**
      * @return ReviewRepository
      */
