@@ -2,11 +2,12 @@
 
 namespace LinkShortener\Entity;
 
-class Review
+class User
 {
     private ?int $id = null;
     private string $username = '';
-    private string $message = '';
+    private string $password = '';
+    private array $links = array();
 
     /**
      * @return int|null
@@ -43,16 +44,32 @@ class Review
     /**
      * @return string
      */
-    public function getMessage(): string
+    public function getPassword(): string
     {
-        return $this->message;
+        return $this->password;
     }
 
     /**
-     * @param string $message
+     * @param string $password
      */
-    public function setMessage(string $message): void
+    public function setPassword(string $password): void
     {
-        $this->message = $message;
+        $this->password = $password;
+    }
+
+    /**
+     * @return array
+     */
+    public function getLinks(): array
+    {
+        return $this->links;
+    }
+
+    /**
+     * @param array $links
+     */
+    public function setLinks(array $links): void
+    {
+        $this->links = $links;
     }
 }

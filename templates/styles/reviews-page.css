@@ -9,6 +9,7 @@
 
 .separate-review {
     font-size: 110%;
-    width: 20em;
+    width: 30em;
     padding: 0.8em 0;
+    overflow-wrap: break-word;
 }

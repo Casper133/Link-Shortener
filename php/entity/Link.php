@@ -7,6 +7,7 @@ class Link
     private ?int $id = null;
     private string $originalLink = '';
     private string $shortLink = '';
+    private ?int $userId = null;
 
     /**
      * @return int|null
@@ -17,9 +18,9 @@ class Link
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      */
-    public function setId(int $id): void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
@@ -54,5 +55,21 @@ class Link
     public function setShortLink(string $shortLink): void
     {
         $this->shortLink = $shortLink;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getUserId(): ?int
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param int|null $userId
+     */
+    public function setUserId(?int $userId): void
+    {
+        $this->userId = $userId;
     }
 }

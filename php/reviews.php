@@ -4,7 +4,7 @@ namespace LinkShortener;
 
 use LinkShortener\Entity\Review;
 use LinkShortener\Loader\TemplateLoader;
-use LinkShortener\Repository\JsonFileReviewRepository;
+use LinkShortener\Repository\DatabaseReviewRepository;
 
 require_once '../vendor/autoload.php';
 
@@ -13,15 +13,15 @@ $message = trim($_POST['message']);
 
 if (!empty($username) && !empty($message)) {
     $message = replaceLinks($message);
+    $reviewRepository = DatabaseReviewRepository::getInstance();
 
-    $review = new Review($username, $message);
-    $reviewRepository = JsonFileReviewRepository::getInstance();
+    $review = new Review();
+    $review->setUsername($username);
+    $review->setMessage($message);
     $reviewRepository->save($review);
-
-    loadReviewsTemplate();
-} else {
-    loadReviewsTemplate();
 }
+
+loadReviewsTemplate();
 
 function replaceLinks(string $message): string
 {
@@ -34,7 +34,7 @@ function replaceLinks(string $message): string
 
 function loadReviewsTemplate()
 {
-    $reviewRepository = JsonFileReviewRepository::getInstance();
+    $reviewRepository = DatabaseReviewRepository::getInstance();
     $reviews = array('reviews' => $reviewRepository->getAll());
 
     $templateLoader = new TemplateLoader();
