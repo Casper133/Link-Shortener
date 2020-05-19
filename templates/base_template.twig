@@ -10,39 +10,42 @@
     {% endblock %}
 </head>
 <body>
+
 <nav class="nav-menu">
     {% block main_page_menu_button %}
-    <a href="main.php">
-        <div class="menu-button">
-            Main Page
-        </div>
-    </a>
+        <a href="main.php">
+            <div class="menu-button">
+                Main Page
+            </div>
+        </a>
     {% endblock %}
     {% block links_page_menu_button %}
-    <a href="links.php">
-        <div class="menu-button">
-            My Links
-        </div>
-    </a>
+        <a href="links.php">
+            <div class="menu-button">
+                My Links
+            </div>
+        </a>
     {% endblock %}
     {% block sign_in_page_menu_button %}
-    <a href="sign_in.php">
-        <div class="menu-button">
-            Sign In
-        </div>
-    </a>
+        <a href="sign_in.php">
+            <div class="menu-button">
+                Sign In
+            </div>
+        </a>
     {% endblock %}
     {% block reviews_page_menu_button %}
-    <a href="reviews.php">
-        <div class="menu-button">
-            Reviews
-        </div>
-    </a>
+        <a href="reviews.php">
+            <div class="menu-button">
+                Reviews
+            </div>
+        </a>
     {% endblock %}
 </nav>
+
 <h1 class="page-header">{% block page_header %}{% endblock %}</h1>
 <br>
 {% block page_content %}
 {% endblock %}
+
 </body>
 </html>
