@@ -5,9 +5,8 @@ namespace LinkShortener\Entity;
 class User
 {
     private ?int $id = null;
-    private string $username = '';
+    private string $email = '';
     private string $password = '';
-    private array $links = array();
 
     /**
      * @return int|null
@@ -28,17 +27,17 @@ class User
     /**
      * @return string
      */
-    public function getUsername(): string
+    public function getEmail(): string
     {
-        return $this->username;
+        return $this->email;
     }
 
     /**
-     * @param string $username
+     * @param string $email
      */
-    public function setUsername(string $username): void
+    public function setEmail(string $email): void
     {
-        $this->username = $username;
+        $this->email = $email;
     }
 
     /**
@@ -55,21 +54,5 @@ class User
     public function setPassword(string $password): void
     {
         $this->password = $password;
-    }
-
-    /**
-     * @return array
-     */
-    public function getLinks(): array
-    {
-        return $this->links;
-    }
-
-    /**
-     * @param array $links
-     */
-    public function setLinks(array $links): void
-    {
-        $this->links = $links;
     }
 }

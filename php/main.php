@@ -9,7 +9,6 @@ use LinkShortener\Repository\DatabaseLinkRepository;
 
 require_once '../vendor/autoload.php';
 
-// TODO: Sign Up page (password hashing using password_hash() and password_verify() functions)
 // TODO: Fill in session after signing up and signing in
 // TODO: Show navigation tabs depending on user's session
 
