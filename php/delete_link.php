@@ -11,5 +11,5 @@ $linkId = $_GET['id'];
 if (isset($linkId)) {
     $linkRepository = DatabaseLinkRepository::getInstance();
     $linkRepository->delete($linkId);
-    header("Location: links.php");
+    header('Location: links.php');
 }

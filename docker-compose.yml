@@ -13,6 +13,7 @@ services:
       POSTGRES_DB_NAME: link_shortener
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: postgres
+      CURRENT_DOMAIN: "http://localhost"
     volumes:
       - ./:/var/www/link_shortener
     networks:

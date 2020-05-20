@@ -8,14 +8,19 @@ use LinkShortener\Repository\DatabaseLinkRepository;
 require_once '../vendor/autoload.php';
 
 $linkId = $_GET['id'];
-$newOriginalLink = $_POST['new_original_link'];
+$newOriginalLink = trim($_POST['new_original_link']);
 
 $linkRepository = DatabaseLinkRepository::getInstance();
 
 if (isset($linkId) && empty($newOriginalLink)) {
     $link = $linkRepository->getById($linkId);
-    $originalLink = $link !== null ? $link->getOriginalLink() : '';
 
+    if ($link === null) {
+        header('Location: links.php');
+        return;
+    }
+
+    $originalLink = $link->getOriginalLink();
     $pageContext = array('originalLink' => $originalLink);
 
     $templateLoader = new TemplateLoader();
@@ -24,7 +29,13 @@ if (isset($linkId) && empty($newOriginalLink)) {
 
 if (isset($linkId) && !empty($newOriginalLink)) {
     $link = $linkRepository->getById($linkId);
+
+    if ($link === null) {
+        header('Location: links.php');
+        return;
+    }
+
     $link->setOriginalLink($newOriginalLink);
     $linkRepository->save($link);
-    header("Location: links.php");
+    header('Location: links.php');
 }

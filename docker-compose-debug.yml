@@ -17,6 +17,7 @@ services:
       POSTGRES_DB_NAME: link_shortener
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: postgres
+      CURRENT_DOMAIN: "http://localhost"
       XDEBUG_CONFIG: "remote_host=192.168.220.1 remote_enable=1"
       PHP_IDE_CONFIG: "serverName=Docker"
     volumes:

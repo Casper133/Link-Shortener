@@ -45,6 +45,30 @@ class DatabaseLinkRepository implements LinkRepository
         $sql = 'SELECT * FROM links WHERE id = ?';
         $resultRow = $this->postgresPdoConnector->execute($sql, [$id])->fetch();
 
+        if (empty($resultRow)) {
+            return null;
+        }
+
+        return $this->mapRowToLink($resultRow);
+    }
+
+    /**
+     * @param string $shortLink
+     * @return Link|null
+     */
+    public function getByShortLink(string $shortLink): ?Link
+    {
+        if (empty($shortLink)) {
+            return null;
+        }
+
+        $sql = 'SELECT * FROM links WHERE short_link = ? LIMIT 1';
+        $resultRow = $this->postgresPdoConnector->execute($sql, [$shortLink])->fetch();
+
+        if (empty($resultRow)) {
+            return null;
+        }
+
         return $this->mapRowToLink($resultRow);
     }
 
@@ -70,7 +94,10 @@ class DatabaseLinkRepository implements LinkRepository
         $link = new Link();
         $link->setId($row['id']);
         $link->setOriginalLink($row['original_link']);
-        $link->setShortLink($row['short_link']);
+
+        $shortLink = getenv('CURRENT_DOMAIN') . '/l/' . $row['short_link'];
+        $link->setShortLink($shortLink);
+
         $link->setUserId($row['user_id']);
 
         return $link;
@@ -104,13 +131,11 @@ class DatabaseLinkRepository implements LinkRepository
             return;
         }
 
-        $sql = 'UPDATE links SET original_link = ?, short_link = ?, user_id = ? WHERE id = ?';
+        $sql = 'UPDATE links SET original_link = ? WHERE id = ?';
         $originalLink = $link->getOriginalLink();
-        $shortLink = $link->getShortLink();
-        $userId = $link->getUserId();
 
         $this->postgresPdoConnector->execute(
-            $sql, [$originalLink, $shortLink, $userId, $id]
+            $sql, [$originalLink, $id]
         );
     }
 
