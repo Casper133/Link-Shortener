@@ -12,6 +12,8 @@ interface LinkRepository
 
     public function getAll(): array;
 
+    public function getUserLinks(int $userId): array;
+
     public function save(Link $link): void;
 
     public function delete(int $id): void;
