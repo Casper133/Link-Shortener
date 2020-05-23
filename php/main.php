@@ -9,8 +9,8 @@ use LinkShortener\Repository\DatabaseLinkRepository;
 
 require_once '../vendor/autoload.php';
 
-// TODO: Fill in session after signing up and signing in
-// TODO: Show navigation tabs depending on user's session
+// TODO: Show navigation tabs depending on user's authorization
+// TODO: set user id for new link if user authorized
 
 $originalLink = trim($_POST['original_link']);
 

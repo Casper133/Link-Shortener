@@ -8,8 +8,10 @@
         "roave/security-advisories": "dev-master"
     },
     "autoload": {
+        "files": [
+            "php/utils/security_utils.php"
+        ],
         "psr-4": {
-            "LinkShortener\\": "php",
             "LinkShortener\\Loader\\": "php/loader",
             "LinkShortener\\Entity\\": "php/entity",
             "LinkShortener\\Repository\\": "php/repository",

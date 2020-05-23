@@ -33,6 +33,26 @@ class DatabaseUserRepository implements UserRepository
     }
 
     /**
+     * @param int $id
+     * @return User|null
+     */
+    public function getById(int $id): ?User
+    {
+        if ($id < 1) {
+            return null;
+        }
+
+        $sql = 'SELECT * FROM users WHERE id = ?';
+        $resultRow = $this->postgresPdoConnector->execute($sql, [$id])->fetch();
+
+        if (empty($resultRow)) {
+            return null;
+        }
+
+        return $this->mapRowToUser($resultRow);
+    }
+
+    /**
      * @param string $email
      * @return User|null
      */

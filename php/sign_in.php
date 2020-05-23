@@ -3,7 +3,7 @@
 namespace LinkShortener;
 
 use LinkShortener\Loader\TemplateLoader;
-use LinkShortener\Repository\DatabaseUserRepository;
+use function LinkShortener\Utils\authenticateUser;
 
 require_once '../vendor/autoload.php';
 
@@ -11,15 +11,14 @@ $email = trim($_POST['email']);
 $password = trim($_POST['password']);
 
 if (!empty($email) && !empty($password)) {
-    $userRepository = DatabaseUserRepository::getInstance();
-    $user = $userRepository->getByEmail($email);
+    $user = authenticateUser($email, $password);
 
-    if (password_verify($password, $user->getPassword())) {
-        header('Location: main.php');
+    if ($user === null) {
+        header('Location: sign_in.php');
         return;
     }
 
-    header('Location: sign_in.php');
+    header('Location: main.php');
     return;
 }
 
