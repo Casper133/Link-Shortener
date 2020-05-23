@@ -2,7 +2,9 @@
 
 namespace LinkShortener;
 
+use LinkShortener\Entity\User;
 use LinkShortener\Loader\TemplateLoader;
+use LinkShortener\Repository\DatabaseUserRepository;
 use function LinkShortener\Utils\authenticateUser;
 use function LinkShortener\Utils\authorizeUser;
 
@@ -19,9 +21,18 @@ $username = trim($_POST['username']);
 $password = trim($_POST['password']);
 
 if (!empty($username) && !empty($password)) {
-    $user = authenticateUser($username, $password);
+    $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
-    if ($user === null) {
+    $user = new User();
+    $user->setUsername($username);
+    $user->setPassword($hashedPassword);
+
+    $userRepository = DatabaseUserRepository::getInstance();
+    $userRepository->save($user);
+
+    $authenticatedUser = authenticateUser($username, $password);
+
+    if ($authenticatedUser === null) {
         header('Location: sign_in.php');
         return;
     }
@@ -31,4 +42,4 @@ if (!empty($username) && !empty($password)) {
 }
 
 $templateLoader = new TemplateLoader();
-$templateLoader->loadTemplate('sign_in_page.twig', ['isUserAuthorized' => false]);
+$templateLoader->loadTemplate('sign_up_page.twig', ['isUserAuthorized' => false]);

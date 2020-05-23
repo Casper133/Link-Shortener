@@ -19,20 +19,6 @@
             </div>
         </a>
     {% endblock %}
-    {% block links_page_menu_button %}
-        <a href="links.php">
-            <div class="menu-button">
-                My Links
-            </div>
-        </a>
-    {% endblock %}
-    {% block sign_in_page_menu_button %}
-        <a href="sign_in.php">
-            <div class="menu-button">
-                Sign In
-            </div>
-        </a>
-    {% endblock %}
     {% block reviews_page_menu_button %}
         <a href="reviews.php">
             <div class="menu-button">
@@ -40,6 +26,42 @@
             </div>
         </a>
     {% endblock %}
+    {% if isUserAuthorized %}
+        {% block links_page_menu_button %}
+            <a href="links.php">
+                <div class="menu-button">
+                    Links
+                </div>
+            </a>
+        {% endblock %}
+    {% endif %}
+    {% if not isUserAuthorized %}
+        {% block sign_in_page_menu_button %}
+            <a href="sign_in.php">
+                <div class="menu-button">
+                    Sign In
+                </div>
+            </a>
+        {% endblock %}
+    {% endif %}
+    {% if not isUserAuthorized %}
+        {% block sign_up_page_menu_button %}
+            <a href="sign_up.php">
+                <div class="menu-button">
+                    Sign Up
+                </div>
+            </a>
+        {% endblock %}
+    {% endif %}
+    {% if isUserAuthorized %}
+        {% block logout_page_menu_button %}
+            <a href="logout.php">
+                <div class="menu-button">
+                    Logout
+                </div>
+            </a>
+        {% endblock %}
+    {% endif %}
 </nav>
 
 <h1 class="page-header">{% block page_header %}{% endblock %}</h1>

@@ -4,20 +4,22 @@ namespace LinkShortener;
 
 use Exception;
 use LinkShortener\Entity\Link;
+use LinkShortener\Entity\User;
 use LinkShortener\Loader\TemplateLoader;
 use LinkShortener\Repository\DatabaseLinkRepository;
+use function LinkShortener\Utils\authorizeUser;
 
 require_once '../vendor/autoload.php';
-
-// TODO: Sign Up page (password hashing using password_hash() and password_verify() functions)
-// TODO: Fill in session after signing up and signing in
-// TODO: Show navigation tabs depending on user's session
 
 $originalLink = trim($_POST['original_link']);
 
 if (empty($originalLink)) {
+    $user = authorizeUser();
+    $isUserAuthorizedArray = ['isUserAuthorized' => $user !== null];
+
     $templateLoader = new TemplateLoader();
-    $templateLoader->loadTemplate('main_page.twig');
+    $templateLoader->loadTemplate('main_page.twig', $isUserAuthorizedArray);
+
     return;
 }
 
@@ -32,14 +34,43 @@ if (empty($shortLink)) {
     return;
 }
 
-$link = new Link();
-$link->setOriginalLink($originalLink);
-$link->setShortLink($shortLink);
+$user = authorizeUser();
+$isUserAuthorized = $user !== null;
+
+$link = fillLinkObject($originalLink, $shortLink, $user);
 
 $linkRepository = DatabaseLinkRepository::getInstance();
 $linkRepository->save($link);
 
-header('Location: links.php');
+if ($isUserAuthorized) {
+    header('Location: links.php');
+    return;
+}
+
+$shortLink = getenv('CURRENT_DOMAIN') . '/l/' . $shortLink;
+$pageContext = array('shortLink' => $shortLink, 'isUserAuthorized' => false);
+
+$templateLoader = new TemplateLoader();
+$templateLoader->loadTemplate('main_page.twig', $pageContext);
+
+/**
+ * @param string $originalLink
+ * @param string $shortLink
+ * @param User|null $user
+ * @return Link
+ */
+function fillLinkObject(string $originalLink, string $shortLink, ?User $user): Link
+{
+    $link = new Link();
+    $link->setOriginalLink($originalLink);
+    $link->setShortLink($shortLink);
+
+    if ($user !== null) {
+        $link->setUserId($user->getId());
+    }
+
+    return $link;
+}
 
 /**
  * @param int $resultLength

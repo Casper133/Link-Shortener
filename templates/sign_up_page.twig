@@ -1,23 +1,23 @@
 {% extends "base_template.twig" %}
 
 {% block page_title %}
-    Sign In
+    Sign Up
 {% endblock %}
 
 {% block additional_stylesheets %}
     <link rel="stylesheet" href="styles/page-form.css">
 {% endblock %}
 
-{% block sign_in_page_menu_button %}
-    <a href="sign_in.php">
+{% block sign_up_page_menu_button %}
+    <a href="sign_up.php">
         <div class="menu-button selected-menu-button">
-            Sign In
+            Sign Up
         </div>
     </a>
 {% endblock %}
 
 {% block page_header %}
-    Sign in to your account
+    Register a new account
 {% endblock %}
 
 {% block page_content %}
@@ -27,7 +27,7 @@
                    type="text" autocomplete="off" required>
             <input class="form-text-field" name="password" placeholder="Enter password"
                    type="password" autocomplete="off" required>
-            <input class="form-button" value="Sign In" type="submit">
+            <input class="form-button" value="Sign Up" type="submit">
         </label>
     </form>
 {% endblock %}

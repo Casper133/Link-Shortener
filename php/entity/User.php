@@ -7,7 +7,6 @@ class User
     private ?int $id = null;
     private string $username = '';
     private string $password = '';
-    private array $links = array();
 
     /**
      * @return int|null
@@ -55,21 +54,5 @@ class User
     public function setPassword(string $password): void
     {
         $this->password = $password;
-    }
-
-    /**
-     * @return array
-     */
-    public function getLinks(): array
-    {
-        return $this->links;
-    }
-
-    /**
-     * @param array $links
-     */
-    public function setLinks(array $links): void
-    {
-        $this->links = $links;
     }
 }
