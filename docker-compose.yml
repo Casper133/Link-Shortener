@@ -19,7 +19,6 @@ services:
     networks:
       - link-shortener-network
     depends_on:
-      - nginx-service
       - postgres-service
 
   nginx-service:
@@ -33,6 +32,8 @@ services:
       - ./:/var/www/link_shortener
     networks:
       - link-shortener-network
+    depends_on:
+      - link-shortener-service
 
   postgres-service:
     image: postgres:12.0

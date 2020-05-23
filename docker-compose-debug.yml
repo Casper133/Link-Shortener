@@ -25,7 +25,6 @@ services:
     networks:
       - link-shortener-network-debug
     depends_on:
-      - nginx-service-debug
       - postgres-service-debug
 
   nginx-service-debug:
@@ -39,6 +38,8 @@ services:
       - ./:/var/www/link_shortener
     networks:
       - link-shortener-network-debug
+    depends_on:
+      - link-shortener-service-debug
 
   postgres-service-debug:
     image: postgres:12.0

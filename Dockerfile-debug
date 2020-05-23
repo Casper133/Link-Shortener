@@ -14,7 +14,6 @@ RUN apt-get update \
     && docker-php-ext-enable xdebug \
     && groupadd -g 1000 php \
     && useradd -u 1000 -ms /bin/bash -g php php
-COPY . /var/www/link_shortener
 COPY ./config/debug/php.ini /usr/local/etc/php/php.ini
 COPY --chown=php:php . /var/www/link_shortener
 USER php
