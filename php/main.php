@@ -48,7 +48,7 @@ if ($isUserAuthorized) {
 }
 
 $shortLink = getenv('CURRENT_DOMAIN') . '/l/' . $shortLink;
-$pageContext = array('shortLink' => $shortLink, 'isUserAuthorized' => true);
+$pageContext = array('shortLink' => $shortLink, 'isUserAuthorized' => false);
 
 $templateLoader = new TemplateLoader();
 $templateLoader->loadTemplate('main_page.twig', $pageContext);
