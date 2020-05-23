@@ -10,8 +10,6 @@ interface LinkRepository
 
     public function getByShortLink(string $shortLink): ?Link;
 
-    public function getAll(): array;
-
     public function getUserLinks(int $userId): array;
 
     public function save(Link $link): void;

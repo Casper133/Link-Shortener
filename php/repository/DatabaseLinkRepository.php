@@ -73,23 +73,6 @@ class DatabaseLinkRepository implements LinkRepository
     }
 
     /**
-     * @return array
-     */
-    public function getAll(): array
-    {
-        $sql = 'SELECT * FROM links ORDER BY id';
-        $resultRows = $this->postgresPdoConnector->execute($sql)->fetchAll();
-
-        $links = array();
-
-        foreach ($resultRows as $row) {
-            $links[] = $this->mapRowToLink($row);
-        }
-
-        return $links;
-    }
-
-    /**
      * @param int $userId
      * @return array
      */
