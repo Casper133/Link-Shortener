@@ -6,17 +6,19 @@ use Exception;
 use LinkShortener\Entity\Link;
 use LinkShortener\Loader\TemplateLoader;
 use LinkShortener\Repository\DatabaseLinkRepository;
+use function LinkShortener\Utils\authorizeUser;
 
 require_once '../vendor/autoload.php';
-
-// TODO: Show navigation tabs depending on user's authorization
-// TODO: set user id for new link if user authorized
 
 $originalLink = trim($_POST['original_link']);
 
 if (empty($originalLink)) {
+    $user = authorizeUser();
+    $isUserAuthorizedArray = ['isUserAuthorized' => $user !== null];
+
     $templateLoader = new TemplateLoader();
-    $templateLoader->loadTemplate('main_page.twig');
+    $templateLoader->loadTemplate('main_page.twig', $isUserAuthorizedArray);
+
     return;
 }
 
@@ -31,14 +33,30 @@ if (empty($shortLink)) {
     return;
 }
 
+$user = authorizeUser();
+$isUserAuthorized = $user !== null;
+
 $link = new Link();
 $link->setOriginalLink($originalLink);
 $link->setShortLink($shortLink);
 
+if ($isUserAuthorized) {
+    $link->setUserId($user->getId());
+}
+
 $linkRepository = DatabaseLinkRepository::getInstance();
 $linkRepository->save($link);
 
-header('Location: links.php');
+if ($isUserAuthorized) {
+    header('Location: links.php');
+    return;
+}
+
+$shortLink = getenv('CURRENT_DOMAIN') . '/l/' . $shortLink;
+$pageContext = array('shortLink' => $shortLink, 'isUserAuthorized' => true);
+
+$templateLoader = new TemplateLoader();
+$templateLoader->loadTemplate('main_page.twig', $pageContext);
 
 /**
  * @param int $resultLength

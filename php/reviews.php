@@ -5,6 +5,7 @@ namespace LinkShortener;
 use LinkShortener\Entity\Review;
 use LinkShortener\Loader\TemplateLoader;
 use LinkShortener\Repository\DatabaseReviewRepository;
+use function LinkShortener\Utils\authorizeUser;
 
 require_once '../vendor/autoload.php';
 
@@ -35,8 +36,10 @@ function replaceLinks(string $message): string
 function loadReviewsTemplate()
 {
     $reviewRepository = DatabaseReviewRepository::getInstance();
-    $reviews = array('reviews' => $reviewRepository->getAll());
+
+    $user = authorizeUser();
+    $pageContext = array('reviews' => $reviewRepository->getAll(), 'isUserAuthorized' => $user !== null);
 
     $templateLoader = new TemplateLoader();
-    $templateLoader->loadTemplate('reviews_page.twig', $reviews);
+    $templateLoader->loadTemplate('reviews_page.twig', $pageContext);
 }
