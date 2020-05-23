@@ -15,11 +15,11 @@ if ($user !== null) {
     return;
 }
 
-$email = trim($_POST['email']);
+$username = trim($_POST['username']);
 $password = trim($_POST['password']);
 
-if (!empty($email) && !empty($password)) {
-    $user = authenticateUser($email, $password);
+if (!empty($username) && !empty($password)) {
+    $user = authenticateUser($username, $password);
 
     if ($user === null) {
         header('Location: sign_in.php');

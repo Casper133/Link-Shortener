@@ -9,10 +9,10 @@ use LinkShortener\Repository\DatabaseUserRepository;
 
 const LOGIN_COOKIE_NAME = 'auth-cookie';
 
-function authenticateUser(string $email, string $password): ?User
+function authenticateUser(string $username, string $password): ?User
 {
     $userRepository = DatabaseUserRepository::getInstance();
-    $user = $userRepository->getByEmail($email);
+    $user = $userRepository->getByUsername($username);
 
     if ($user === null) {
         return null;
@@ -23,7 +23,7 @@ function authenticateUser(string $email, string $password): ?User
     }
 
     $loginCookieValue = sha1(
-        time() . $_SERVER['REMOTE_ADDR'] . $user->getId() . $user->getEmail() . $user->getPassword()
+        time() . $_SERVER['REMOTE_ADDR'] . $user->getId() . $user->getUsername() . $user->getPassword()
     );
 
     $loginCookie = new LoginCookie();

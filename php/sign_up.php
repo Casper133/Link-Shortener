@@ -17,20 +17,20 @@ if ($user !== null) {
     return;
 }
 
-$email = trim($_POST['email']);
+$username = trim($_POST['username']);
 $password = trim($_POST['password']);
 
-if (!empty($email) && !empty($password)) {
+if (!empty($username) && !empty($password)) {
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     $user = new User();
-    $user->setEmail($email);
+    $user->setUsername($username);
     $user->setPassword($hashedPassword);
 
     $userRepository = DatabaseUserRepository::getInstance();
     $userRepository->save($user);
 
-    $authenticatedUser = authenticateUser($email, $password);
+    $authenticatedUser = authenticateUser($username, $password);
 
     if ($authenticatedUser === null) {
         header('Location: sign_in.php');

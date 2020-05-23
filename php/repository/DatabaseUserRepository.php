@@ -53,13 +53,13 @@ class DatabaseUserRepository implements UserRepository
     }
 
     /**
-     * @param string $email
+     * @param string $username
      * @return User|null
      */
-    public function getByEmail(string $email): ?User
+    public function getByUsername(string $username): ?User
     {
-        $sql = 'SELECT * FROM users WHERE email = ? LIMIT 1';
-        $resultRow = $this->postgresPdoConnector->execute($sql, [$email])->fetch();
+        $sql = 'SELECT * FROM users WHERE username = ? LIMIT 1';
+        $resultRow = $this->postgresPdoConnector->execute($sql, [$username])->fetch();
 
         if (empty($resultRow)) {
             return null;
@@ -72,7 +72,7 @@ class DatabaseUserRepository implements UserRepository
     {
         $user = new User();
         $user->setId($row['id']);
-        $user->setEmail($row['email']);
+        $user->setUsername($row['username']);
         $user->setPassword($row['password']);
 
         return $user;
@@ -87,12 +87,12 @@ class DatabaseUserRepository implements UserRepository
             return;
         }
 
-        $sql = 'INSERT INTO users(email, password) VALUES (?, ?)';
-        $email = $user->getEmail();
+        $sql = 'INSERT INTO users(username, password) VALUES (?, ?)';
+        $username = $user->getUsername();
         $password = $user->getPassword();
 
         $this->postgresPdoConnector->execute(
-            $sql, [$email, $password]
+            $sql, [$username, $password]
         );
     }
 }
