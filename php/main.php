@@ -4,6 +4,7 @@ namespace LinkShortener;
 
 use Exception;
 use LinkShortener\Entity\Link;
+use LinkShortener\Entity\User;
 use LinkShortener\Loader\TemplateLoader;
 use LinkShortener\Repository\DatabaseLinkRepository;
 use function LinkShortener\Utils\authorizeUser;
@@ -36,13 +37,7 @@ if (empty($shortLink)) {
 $user = authorizeUser();
 $isUserAuthorized = $user !== null;
 
-$link = new Link();
-$link->setOriginalLink($originalLink);
-$link->setShortLink($shortLink);
-
-if ($isUserAuthorized) {
-    $link->setUserId($user->getId());
-}
+$link = fillLinkObject($originalLink, $shortLink, $user);
 
 $linkRepository = DatabaseLinkRepository::getInstance();
 $linkRepository->save($link);
@@ -57,6 +52,25 @@ $pageContext = array('shortLink' => $shortLink, 'isUserAuthorized' => true);
 
 $templateLoader = new TemplateLoader();
 $templateLoader->loadTemplate('main_page.twig', $pageContext);
+
+/**
+ * @param string $originalLink
+ * @param string $shortLink
+ * @param User|null $user
+ * @return Link
+ */
+function fillLinkObject(string $originalLink, string $shortLink, ?User $user): Link
+{
+    $link = new Link();
+    $link->setOriginalLink($originalLink);
+    $link->setShortLink($shortLink);
+
+    if ($user !== null) {
+        $link->setUserId($user->getId());
+    }
+
+    return $link;
+}
 
 /**
  * @param int $resultLength
